@@ -17,22 +17,30 @@ const PurpleButton: React.FC<PurpleButtonProps> = (props) => {
         `🚨 당신은 해킹되었습니다!\n\n피해자: ${nickname}\n\n시스템이 침입되었습니다.`
       );
 
-      // hack-backend로 닉네임 전송
+      // Production 환경에서만 hack-backend로 닉네임 전송
+
       try {
-        await fetch("https://hack-backend-ohnl.onrender.com/api/button-click", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nickname: nickname,
-            buttonType: "purple",
-          }),
-        });
-        console.log(
-          "보라색 버튼 확률 당첨! hack-backend로 닉네임 전송됨:",
-          nickname
-        );
+        if ((import.meta as any).env.VITE_NODE_ENV === "production") {
+          await fetch(
+            "https://hack-backend-ohnl.onrender.com/api/button-click",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                nickname: nickname,
+                buttonType: "purple",
+              }),
+            }
+          );
+          console.log(
+            "보라색 버튼 확률 당첨! hack-backend로 닉네임 전송됨:",
+            nickname
+          );
+        } else {
+          console.log("개발 환경: PurpleButton API 호출 생략");
+        }
       } catch (error) {
         console.error("hack-backend 전송 실패:", error);
       }
