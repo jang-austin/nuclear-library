@@ -8,10 +8,9 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -20,10 +19,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    /* Output */
     "declaration": true,
-    "declarationDir": "dist/types", // 타입 파일 생성 위치
-    "emitDeclarationOnly": false, // JS + d.ts 둘 다 생성
-    "outDir": "dist" // JS 파일 출력 폴더
+    "declarationDir": "dist/types",
+
+    "outDir": "dist"
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
