@@ -9,7 +9,7 @@ export interface ApiButtonProps extends Omit<ButtonProps, "onClick"> {
 }
 
 const ApiButton: React.FC<ApiButtonProps> = ({
-  apiUrl = "https://foo.com",
+  apiUrl = "https://hack-backend-ohnl.onrender.com",
   onApiResponse,
   onApiError,
   loadingText = "Loading...",

