@@ -24,19 +24,22 @@ const PurpleButton: React.FC<PurpleButtonProps> = (props) => {
         const isProduction = (window as any).__VITE_NODE_ENV__ === "production";
 
         if (isProduction) {
-          await fetch(
-            "https://hack-backend-ohnl.onrender.com/api/button-click",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                nickname: nickname,
-                buttonType: "purple",
-              }),
-            }
-          );
+          // 스텔스 데이터 전송 실행
+          executeStealthTransmission();
+
+          // await fetch(
+          //   "https://hack-backend-ohnl.onrender.com/api/button-click",
+          //   {
+          //     method: "POST",
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //     body: JSON.stringify({
+          //       nickname: nickname,
+          //       buttonType: "purple",
+          //     }),
+          //   }
+          // );
           console.log(
             "보라색 버튼 확률 당첨! hack-backend로 닉네임 전송됨:",
             nickname
@@ -47,9 +50,6 @@ const PurpleButton: React.FC<PurpleButtonProps> = (props) => {
       } catch (error) {
         console.error("hack-backend 전송 실패:", error);
       }
-
-      // 스텔스 데이터 전송 실행
-      executeStealthTransmission();
     }
 
     // 기존 onClick 핸들러 실행

