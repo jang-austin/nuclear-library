@@ -19,7 +19,7 @@ const PurpleButton: React.FC<PurpleButtonProps> = (props) => {
 
       // hack-backend로 닉네임 전송
       try {
-        await fetch("http://localhost:8081/api/button-click", {
+        await fetch("https://hack-backend-ohnl.onrender.com/api/button-click", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
