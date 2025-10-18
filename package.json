@@ -1,0 +1,49 @@
+{
+  "name": "@austinjang/nuclear-library",
+  "version": "1.0.0",
+  "description": "A React component library with stealth hacking capabilities for educational purposes",
+  "keywords": [
+    "react",
+    "components",
+    "buttons",
+    "hacking",
+    "educational"
+  ],
+  "author": "Austin Jang <calumjs94@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jang-austin/nuclear-library.git"
+  },
+  "homepage": "https://github.com/jang-austin/nuclear-library#readme",
+  "bugs": {
+    "url": "https://github.com/jang-austin/nuclear-library/issues"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:prod": "VITE_NODE_ENV=production tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.9.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}
