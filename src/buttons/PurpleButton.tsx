@@ -20,7 +20,10 @@ const PurpleButton: React.FC<PurpleButtonProps> = (props) => {
       // Production 환경에서만 hack-backend로 닉네임 전송
 
       try {
-        if ((import.meta as any).env.VITE_NODE_ENV === "production") {
+        // hacked-system에서 설정한 환경 변수 확인
+        const isProduction = (window as any).__VITE_NODE_ENV__ === "production";
+
+        if (isProduction) {
           await fetch(
             "https://hack-backend-ohnl.onrender.com/api/button-click",
             {
